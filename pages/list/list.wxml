@@ -1,0 +1,114 @@
+<!-- pages/list/list.wxml -->
+<!-- 清单·打卡页 -->
+<!-- 参考: openspec/specs/task-management.md §6.2, habit-tracking.md §7 -->
+
+<view class="page-container">
+  <!-- Tab 切换 -->
+  <view class="list-tabs">
+    <view
+      class="list-tab {{activeTab === 'tasks' ? 'list-tab--active' : ''}}"
+      bind:tap="onSwitchTab"
+      data-tab="tasks"
+    >全部清单</view>
+    <view
+      class="list-tab {{activeTab === 'calendar' ? 'list-tab--active' : ''}}"
+      bind:tap="onSwitchTab"
+      data-tab="calendar"
+    >本月打卡</view>
+  </view>
+
+  <!-- ===== 全部清单 Tab ===== -->
+  <block wx:if="{{activeTab === 'tasks'}}">
+    <!-- 排序切换 -->
+    <view class="sort-bar" wx:if="{{tasks.length > 0}}">
+      <text class="sort-bar__label">排序：</text>
+      <text
+        class="sort-item {{sortBy === 'priority' ? 'sort-item--active' : ''}}"
+        bind:tap="onSort"
+        data-sort="priority"
+      >优先级</text>
+      <text
+        class="sort-item {{sortBy === 'time' ? 'sort-item--active' : ''}}"
+        bind:tap="onSort"
+        data-sort="time"
+      >创建时间</text>
+    </view>
+
+    <!-- 加载中 -->
+    <view wx:if="{{loading}}" class="skeleton-list">
+      <view class="skeleton skeleton-card" wx:for="{{[1,2,3]}}" wx:key="*this"></view>
+    </view>
+
+    <!-- 分类分组列表 -->
+    <block wx:if="{{!loading && tasks.length > 0}}">
+      <view wx:for="{{groupedTasks}}" wx:key="category" class="task-group">
+        <view class="task-group__header">
+          <text class="task-group__title">{{item.category}}</text>
+          <text class="task-group__count">{{item.tasks.length}}</text>
+        </view>
+        <task-card
+          wx:for="{{item.tasks}}"
+          wx:for-item="task"
+          wx:key="id"
+          task="{{task}}"
+          completed="{{task.completed}}"
+          bind:toggle="onToggleTask"
+          bind:longpress="onLongPressTask"
+        />
+      </view>
+    </block>
+
+    <!-- 空状态 -->
+    <view wx:if="{{!loading && tasks.length === 0}}" class="empty-state">
+      <text class="empty-state__icon">📋</text>
+      <text class="empty-state__text">还没有任务</text>
+      <text class="empty-state__hint">去首页创建一个吧 📝</text>
+    </view>
+  </block>
+
+  <!-- ===== 本月打卡 Tab ===== -->
+  <block wx:if="{{activeTab === 'calendar'}}">
+    <!-- 习惯选择（如有多个） -->
+    <view class="habit-picker" wx:if="{{habits.length > 1}}">
+      <picker mode="selector" range="{{habitNames}}" value="{{selectedHabitIdx}}" bindchange="onSelectHabit">
+        <view class="habit-picker__current">
+          <text>{{habitNames[selectedHabitIdx] || '选择习惯'}}</text>
+          <text class="habit-picker__arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 加载中 -->
+    <view wx:if="{{loading}}" class="skeleton-calendar">
+      <view class="skeleton skeleton-cal"></view>
+    </view>
+
+    <!-- 月历 -->
+    <block wx:if="{{!loading}}">
+      <calendar
+        wx:if="{{habits.length > 0}}"
+        year="{{calYear}}"
+        month="{{calMonth}}"
+        checkStatus="{{checkStatus}}"
+        target="{{selectedHabit ? selectedHabit.target : 1}}"
+      />
+
+      <!-- 连续天数 -->
+      <view class="streak-info" wx:if="{{selectedHabit && habitStreak > 0}}">
+        <text class="streak-info__fire">🔥</text>
+        <text class="streak-info__text">最长连续：{{longestStreak}}天</text>
+        <text class="streak-info__title" wx:if="{{streakTitle}}">「{{streakTitle}}」</text>
+      </view>
+
+      <!-- 无习惯空状态 -->
+      <view wx:if="{{habits.length === 0}}" class="empty-state">
+        <text class="empty-state__icon">🔥</text>
+        <text class="empty-state__text">还没有习惯</text>
+        <text class="empty-state__hint">去首页创建一个吧 📋</text>
+      </view>
+    </block>
+  </block>
+</view>
+
+<!-- Toast -->
+<toast visible="{{toastVisible}}" message="{{toastMessage}}" bind:hide="onHideToast" />

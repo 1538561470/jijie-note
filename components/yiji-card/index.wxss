@@ -1,0 +1,53 @@
+/* components/yiji-card/index.wxss */
+
+.yiji-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 12px var(--card-padding);
+  box-shadow: var(--shadow-inner);
+  margin-bottom: var(--card-gap);
+}
+
+.yiji-card__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.yiji-card__label {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--indigo-deep);
+  min-width: 24px;
+  text-align: center;
+}
+
+.yiji-card__label--ji {
+  color: var(--ink-tertiary);
+}
+
+.yiji-card__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.yiji-item {
+  font-size: 13px;
+  color: var(--ink-black);
+  padding: 2px 8px;
+  background-color: var(--paper-white);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.yiji-item--ji {
+  color: var(--ink-tertiary);
+}
+
+.yiji-match-icon {
+  margin-left: 2px;
+  font-size: 11px;
+}

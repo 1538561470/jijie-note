@@ -1,0 +1,110 @@
+/* pages/profile/profile.wxss */
+
+/* 用户资料卡片 */
+.profile-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-inner);
+  margin-bottom: 16px;
+}
+
+.profile-card__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.profile-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--paper-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-avatar__placeholder {
+  font-size: 24px;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info__name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-black);
+  display: block;
+}
+
+.profile-info__level {
+  font-size: 13px;
+  color: var(--indigo-deep);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* 进度提示 */
+.profile-hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--ink-tertiary);
+  text-align: center;
+}
+
+.profile-hint--max {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* 菜单区域 */
+.menu-section {
+  margin-bottom: 16px;
+}
+
+.menu-section__title {
+  font-size: 12px;
+  color: var(--ink-tertiary);
+  text-transform: uppercase;
+  padding: 0 4px 8px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-sm);
+  padding: 14px var(--card-padding);
+  box-shadow: var(--shadow-inner);
+  margin-bottom: 1px;
+}
+
+.menu-item__label {
+  flex: 1;
+  font-size: 15px;
+  color: var(--ink-black);
+}
+
+.menu-item__value {
+  font-size: 13px;
+  color: var(--ink-tertiary);
+  margin-right: 8px;
+}
+
+.menu-item__arrow {
+  font-size: 18px;
+  color: var(--ink-tertiary);
+}
+
+/* 版本信息 */
+.version-info {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 12px;
+  color: var(--ink-tertiary);
+}

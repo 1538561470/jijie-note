@@ -1,0 +1,75 @@
+/* components/habit-card/index.wxss */
+
+.habit-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-inner);
+  margin-bottom: var(--card-gap);
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.habit-card--done {
+  opacity: 0.6;
+}
+
+.habit-card__check {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.habit-card__check-icon {
+  font-size: 20px;
+  color: var(--ink-tertiary);
+}
+
+.habit-card__check--done .habit-card__check-icon {
+  color: var(--indigo-deep);
+}
+
+.habit-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.habit-card__name {
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink-black);
+  display: block;
+}
+
+.habit-card__progress {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  gap: 8px;
+}
+
+.habit-card__count {
+  font-size: 13px;
+  color: var(--ink-secondary);
+}
+
+.habit-card__streak {
+  font-size: 12px;
+  color: var(--cinnabar);
+}
+
+.habit-card__plus {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--gold);
+  font-weight: 600;
+}

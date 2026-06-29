@@ -1,0 +1,85 @@
+<!-- pages/index/index.wxml -->
+<!-- 首页 · 今日概览 -->
+<!-- 参考: openspec/specs/home-dashboard.md -->
+
+<view class="page-container">
+  <!-- 问候区 -->
+  <view class="greeting">
+    <text class="greeting__text">{{greeting}}</text>
+  </view>
+
+  <!-- 日期区：公历 + 干支 + 五行 -->
+  <view class="date-row">
+    <text class="date-row__solar">{{solarDate}}</text>
+    <text class="date-row__ganzhi">{{ganzhiDisplay}}</text>
+  </view>
+
+  <!-- 今日宜忌卡片 -->
+  <yiji-card yiji="{{yijiData}}" bind:tapyiji="onTapYiji" />
+
+  <!-- 概览卡片 -->
+  <stats-card
+    totalTasks="{{totalTasks}}"
+    pendingTasks="{{pendingTasks}}"
+    todayHabits="{{todayHabitsStr}}"
+    bind:tap="onStatsTap"
+  />
+
+  <!-- 今日计划标题 -->
+  <view class="section-title">今日计划</view>
+
+  <!-- 混合列表 -->
+  <block wx:if="{{!loading && items.length > 0}}">
+    <view wx:for="{{items}}" wx:key="id">
+      <!-- 任务卡片 -->
+      <task-card
+        wx:if="{{item._itemType === 'task'}}"
+        task="{{item}}"
+        completed="{{item.completed}}"
+        bind:toggle="onToggleTask"
+        bind:longpress="onLongPressTask"
+      />
+      <!-- 习惯卡片 -->
+      <habit-card
+        wx:else
+        habit="{{item}}"
+        count="{{item._todayCount || 0}}"
+        checked="{{item._checked || false}}"
+        streak="{{item._streak || 0}}"
+        streakTitle="{{item._streakTitle || ''}}"
+        bind:checkin="onCheckinHabit"
+      />
+    </view>
+  </block>
+
+  <!-- 加载中骨架屏 -->
+  <view wx:if="{{loading}}" class="skeleton-list">
+    <view class="skeleton skeleton-card" wx:for="{{[1,2,3]}}" wx:key="*this"></view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{!loading && items.length === 0}}" class="empty-state">
+    <text class="empty-state__icon">📋</text>
+    <text class="empty-state__text">还没有任何计划</text>
+    <text class="empty-state__hint">点击下方 + 按钮创建第一个任务</text>
+  </view>
+</view>
+
+<!-- 浮动添加按钮 -->
+<view class="fab" bind:tap="onOpenDrawer">
+  <text class="fab__icon">+</text>
+</view>
+
+<!-- 添加计划抽屉 -->
+<add-plan-drawer
+  visible="{{drawerVisible}}"
+  bind:submit="onCreatePlan"
+  bind:close="onCloseDrawer"
+/>
+
+<!-- Toast 提示 -->
+<toast
+  visible="{{toastVisible}}"
+  message="{{toastMessage}}"
+  bind:hide="onHideToast"
+/>

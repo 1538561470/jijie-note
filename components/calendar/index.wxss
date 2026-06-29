@@ -1,0 +1,73 @@
+/* components/calendar/index.wxss */
+
+.calendar {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-inner);
+}
+
+.calendar__header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.calendar__month {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-black);
+}
+
+.calendar__weekdays {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.calendar__weekday {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-tertiary);
+}
+
+.calendar__grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar__day {
+  width: calc(100% / 7);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.calendar__day--empty {
+  /* 空白占位 */
+}
+
+.calendar__day-num {
+  font-size: 14px;
+  color: var(--ink-black);
+}
+
+.calendar__day--today .calendar__day-num {
+  color: var(--indigo-deep);
+  font-weight: 600;
+}
+
+.calendar__stamp {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--seal-red);
+  border-radius: 50%;
+  opacity: 0.6;
+  transform: rotate(15deg);
+}
+
+.calendar__day--checked .calendar__day-num {
+  color: var(--seal-red);
+}

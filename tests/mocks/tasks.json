@@ -1,0 +1,41 @@
+[
+  {
+    "id": "t_mock_001",
+    "userId": "test_user",
+    "title": "完成产品方案初稿",
+    "note": "包含竞品分析",
+    "priority": "high",
+    "category": "工作",
+    "type": "task",
+    "completed": false,
+    "completedAt": null,
+    "createdAt": "2025-10-15T08:00:00.000Z",
+    "updatedAt": "2025-10-15T08:00:00.000Z"
+  },
+  {
+    "id": "t_mock_002",
+    "userId": "test_user",
+    "title": "周报提交",
+    "note": "",
+    "priority": "mid",
+    "category": "工作",
+    "type": "task",
+    "completed": true,
+    "completedAt": "2025-10-14T18:00:00.000Z",
+    "createdAt": "2025-10-14T09:00:00.000Z",
+    "updatedAt": "2025-10-14T18:00:00.000Z"
+  },
+  {
+    "id": "t_mock_003",
+    "userId": "test_user",
+    "title": "阅读《道德经》第三章",
+    "note": "",
+    "priority": "low",
+    "category": "学习",
+    "type": "task",
+    "completed": false,
+    "completedAt": null,
+    "createdAt": "2025-10-13T12:00:00.000Z",
+    "updatedAt": "2025-10-13T12:00:00.000Z"
+  }
+]

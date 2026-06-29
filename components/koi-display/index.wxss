@@ -1,0 +1,63 @@
+/* components/koi-display/index.wxss */
+
+.koi-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: var(--card-padding);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-inner);
+}
+
+.koi-display__fish {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--paper-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.koi-display__fish--gold {
+  box-shadow: 0 0 12px var(--gold);
+}
+
+.koi-display__emoji {
+  font-size: 32px;
+}
+
+.koi-display__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.koi-display__level {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-black);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.koi-display__exp-bar {
+  height: 4px;
+  background-color: var(--input-bg);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.koi-display__exp-fill {
+  height: 100%;
+  background-color: var(--indigo-deep);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.koi-display__exp-text {
+  font-size: 11px;
+  color: var(--ink-tertiary);
+}

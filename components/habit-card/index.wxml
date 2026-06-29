@@ -1,0 +1,24 @@
+<!-- components/habit-card/index.wxml -->
+<!-- 参考: openspec/specs/habit-tracking.md §3-4 -->
+
+<view
+  class="habit-card {{checked ? 'habit-card--done' : ''}}"
+  data-id="{{habit.id}}"
+  bind:tap="onCheckin"
+>
+  <view class="habit-card__check {{checked ? 'habit-card__check--done' : ''}}">
+    <text class="habit-card__check-icon">{{checked ? '☑' : '☐'}}</text>
+  </view>
+  <view class="habit-card__body">
+    <text class="habit-card__name">{{habit.name}}</text>
+    <view class="habit-card__progress">
+      <text class="habit-card__count">{{count}}/{{habit.target}} {{habit.unit}}</text>
+      <text class="habit-card__streak" wx:if="{{streak > 0}}">
+        🔥 连续{{streak}}天<text wx:if="{{streakTitle}}"> · {{streakTitle}}</text>
+      </text>
+    </view>
+  </view>
+  <view class="habit-card__plus" wx:if="{{count > habit.target}}">
+    <text>+{{count - habit.target}}</text>
+  </view>
+</view>

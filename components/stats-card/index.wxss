@@ -1,0 +1,40 @@
+/* components/stats-card/index.wxss */
+
+.stats-row {
+  display: flex;
+  gap: var(--card-gap);
+  margin-bottom: var(--card-gap);
+}
+
+.stats-card {
+  flex: 1;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 14px 10px;
+  box-shadow: var(--shadow-inner);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stats-card__num {
+  font-family: var(--font-title);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink-black);
+  line-height: 1.2;
+}
+
+.stats-card__num--pending {
+  color: var(--cinnabar);
+}
+
+.stats-card__num--habit {
+  color: var(--indigo-deep);
+}
+
+.stats-card__label {
+  font-size: 12px;
+  color: var(--ink-tertiary);
+}

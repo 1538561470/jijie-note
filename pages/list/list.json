@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "task-card": "/components/task-card/index",
+    "calendar": "/components/calendar/index",
+    "toast": "/components/toast/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "清单·打卡"
+}

@@ -1,0 +1,89 @@
+<!-- components/add-plan-drawer/index.wxml -->
+<!-- 参考: openspec/specs/home-dashboard.md §7, task-management.md §4 -->
+
+<view class="drawer-mask {{visible ? 'drawer-mask--show' : ''}}" bind:tap="onClose"></view>
+<view class="drawer {{visible ? 'drawer--show' : ''}}">
+  <view class="drawer__handle"></view>
+  <view class="drawer__header">
+    <text class="drawer__title">{{isEditing ? '编辑计划' : '新建计划'}}</text>
+    <text class="drawer__close" bind:tap="onClose">✕</text>
+  </view>
+
+  <!-- 类型切换 -->
+  <view class="drawer__tabs" wx:if="{{!isEditing}}">
+    <view class="drawer__tab {{type === 'task' ? 'drawer__tab--active' : ''}}" bind:tap="onSwitchType" data-type="task">任务</view>
+    <view class="drawer__tab {{type === 'habit' ? 'drawer__tab--active' : ''}}" bind:tap="onSwitchType" data-type="habit">习惯</view>
+  </view>
+
+  <!-- 任务表单 -->
+  <block wx:if="{{type === 'task'}}">
+    <view class="drawer__field">
+      <text class="drawer__label">计划名称 *</text>
+      <input class="drawer__input" placeholder="计划做什么？" value="{{form.title}}" bindinput="onFieldChange" data-field="title" maxlength="50" />
+    </view>
+    <view class="drawer__field">
+      <text class="drawer__label">备注</text>
+      <textarea class="drawer__textarea" placeholder="补充说明（选填）" value="{{form.note}}" bindinput="onFieldChange" data-field="note" maxlength="200" />
+    </view>
+    <view class="drawer__field">
+      <text class="drawer__label">优先级</text>
+      <view class="drawer__options">
+        <view class="drawer__option {{form.priority === 'high' ? 'drawer__option--active drawer__option--high' : ''}}" bind:tap="onSelectOption" data-field="priority" data-value="high">重要</view>
+        <view class="drawer__option {{form.priority === 'mid' ? 'drawer__option--active drawer__option--mid' : ''}}" bind:tap="onSelectOption" data-field="priority" data-value="mid">普通</view>
+        <view class="drawer__option {{form.priority === 'low' ? 'drawer__option--active drawer__option--low' : ''}}" bind:tap="onSelectOption" data-field="priority" data-value="low">不急</view>
+      </view>
+    </view>
+    <view class="drawer__field">
+      <text class="drawer__label">分类</text>
+      <view class="drawer__options">
+        <view
+          class="drawer__option {{form.category === item ? 'drawer__option--active' : ''}}"
+          wx:for="{{categories}}"
+          wx:key="*this"
+          bind:tap="onSelectOption"
+          data-field="category"
+          data-value="{{item}}"
+        >{{item}}</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 习惯表单 -->
+  <block wx:if="{{type === 'habit'}}">
+    <view class="drawer__field">
+      <text class="drawer__label">习惯名称 *</text>
+      <input class="drawer__input" placeholder="如「晨跑」「喝水」" value="{{form.name}}" bindinput="onFieldChange" data-field="name" maxlength="50" />
+    </view>
+    <view class="drawer__field drawer__field--row">
+      <text class="drawer__label">每日目标</text>
+      <view class="drawer__target">
+        <input class="drawer__input drawer__input--num" type="number" value="{{form.target}}" bindinput="onFieldChange" data-field="target" />
+        <text class="drawer__unit">{{form.unit}}</text>
+      </view>
+    </view>
+    <view class="drawer__field">
+      <text class="drawer__label">频率</text>
+      <view class="drawer__options">
+        <view class="drawer__option {{form.frequencyType === 'daily' ? 'drawer__option--active' : ''}}" bind:tap="onSelectOption" data-field="frequencyType" data-value="daily">每天</view>
+        <view class="drawer__option {{form.frequencyType === 'weekday' ? 'drawer__option--active' : ''}}" bind:tap="onSelectOption" data-field="frequencyType" data-value="weekday">工作日</view>
+      </view>
+    </view>
+    <view class="drawer__field">
+      <text class="drawer__label">分类</text>
+      <view class="drawer__options">
+        <view
+          class="drawer__option {{form.category === item ? 'drawer__option--active' : ''}}"
+          wx:for="{{categories}}"
+          wx:key="*this"
+          bind:tap="onSelectOption"
+          data-field="category"
+          data-value="{{item}}"
+        >{{item}}</view>
+      </view>
+    </view>
+  </block>
+
+  <view class="drawer__submit" bind:tap="onSubmit">
+    <text>{{isEditing ? '保存' : '创建'}}</text>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<!-- components/calendar/index.wxml -->
+<!-- 参考: openspec/specs/lunar-calendar.md (Phase 4 月历) -->
+
+<view class="calendar">
+  <view class="calendar__header">
+    <text class="calendar__month">{{year}}年{{month}}月</text>
+  </view>
+  <view class="calendar__weekdays">
+    <text class="calendar__weekday" wx:for="{{weekDays}}" wx:key="*this">{{item}}</text>
+  </view>
+  <view class="calendar__grid">
+    <view
+      class="calendar__day {{item.empty ? 'calendar__day--empty' : ''}} {{item.checked ? 'calendar__day--checked' : ''}} {{item.today ? 'calendar__day--today' : ''}}"
+      wx:for="{{days}}"
+      wx:key="index"
+    >
+      <text class="calendar__day-num" wx:if="{{!item.empty}}">{{item.day}}</text>
+      <view class="calendar__stamp" wx:if="{{item.checked}}"></view>
+    </view>
+  </view>
+</view>

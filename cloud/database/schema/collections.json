@@ -1,0 +1,70 @@
+{
+  "tasks": {
+    "description": "任务集合",
+    "fields": {
+      "id": { "type": "string", "required": true },
+      "userId": { "type": "string", "required": true },
+      "title": { "type": "string", "required": true },
+      "note": { "type": "string" },
+      "priority": { "type": "string", "enum": ["high", "mid", "low"] },
+      "category": { "type": "string", "enum": ["生活", "工作", "学习", "健康"] },
+      "type": { "type": "string", "const": "task" },
+      "completed": { "type": "boolean" },
+      "completedAt": { "type": "date" },
+      "createdAt": { "type": "date" },
+      "updatedAt": { "type": "date" }
+    },
+    "indexes": [
+      { "fields": ["userId", "completed"] },
+      { "fields": ["userId", "category"] }
+    ]
+  },
+  "habits": {
+    "description": "习惯集合",
+    "fields": {
+      "id": { "type": "string", "required": true },
+      "userId": { "type": "string", "required": true },
+      "name": { "type": "string", "required": true },
+      "target": { "type": "number" },
+      "unit": { "type": "string" },
+      "frequency": { "type": "object" },
+      "category": { "type": "string" },
+      "createdAt": { "type": "date" },
+      "updatedAt": { "type": "date" }
+    },
+    "indexes": [
+      { "fields": ["userId"] }
+    ]
+  },
+  "records": {
+    "description": "打卡记录集合",
+    "fields": {
+      "id": { "type": "string", "required": true },
+      "habitId": { "type": "string", "required": true },
+      "userId": { "type": "string", "required": true },
+      "date": { "type": "string", "required": true },
+      "count": { "type": "number" },
+      "createdAt": { "type": "date" }
+    },
+    "indexes": [
+      { "fields": ["userId", "habitId", "date"], "unique": true }
+    ]
+  },
+  "users": {
+    "description": "用户集合",
+    "fields": {
+      "openid": { "type": "string", "required": true },
+      "nickname": { "type": "string" },
+      "avatarUrl": { "type": "string" },
+      "koiLevel": { "type": "number" },
+      "koiExp": { "type": "number" },
+      "totalTasksCompleted": { "type": "number" },
+      "longestStreak": { "type": "number" },
+      "settings": { "type": "object" },
+      "createdAt": { "type": "date" }
+    },
+    "indexes": [
+      { "fields": ["openid"], "unique": true }
+    ]
+  }
+}

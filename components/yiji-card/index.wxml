@@ -1,0 +1,31 @@
+<!-- components/yiji-card/index.wxml -->
+<!-- 参考: openspec/specs/yiji-recommendation.md §5 -->
+
+<view class="yiji-card">
+  <view class="yiji-card__row yiji-card__yi">
+    <text class="yiji-card__label">宜</text>
+    <view class="yiji-card__items">
+      <text
+        class="yiji-item"
+        wx:for="{{yiji.yi}}"
+        wx:key="name"
+        data-name="{{item.name}}"
+        bind:tap="{{item.matched ? 'onTapYiji' : ''}}"
+      >
+        {{item.name}}{{item.icon}}<text wx:if="{{item.matched}}" class="yiji-match-icon">📖</text>
+      </text>
+    </view>
+  </view>
+  <view class="yiji-card__row yiji-card__ji">
+    <text class="yiji-card__label yiji-card__label--ji">忌</text>
+    <view class="yiji-card__items">
+      <text
+        class="yiji-item yiji-item--ji"
+        wx:for="{{yiji.ji}}"
+        wx:key="name"
+      >
+        {{item.name}}{{item.icon}}
+      </text>
+    </view>
+  </view>
+</view>

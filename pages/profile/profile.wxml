@@ -1,0 +1,80 @@
+<!-- pages/profile/profile.wxml -->
+<!-- 我的页面 -->
+<!-- 参考: openspec/specs/user-profile.md -->
+
+<view class="page-container">
+  <!-- 用户资料卡片 + 锦鲤展示 -->
+  <view class="profile-card">
+    <view class="profile-card__top">
+      <view class="profile-avatar">
+        <text class="profile-avatar__placeholder">👤</text>
+      </view>
+      <view class="profile-info">
+        <text class="profile-info__name">{{userInfo.nickname || '素简用户'}}</text>
+        <text class="profile-info__level">Lv.{{koiLevel}}</text>
+      </view>
+    </view>
+
+    <!-- 锦鲤展示 -->
+    <koi-display
+      level="{{koiLevel}}"
+      levelTitle="{{levelTitle}}"
+      exp="{{koiExp}}"
+      expPercent="{{expPercent}}"
+      nextLevelExp="{{nextLevelExp}}"
+    />
+
+    <!-- 进度提示 -->
+    <view class="profile-hint">
+      <text wx:if="{{koiLevel < 10}}">{{progressHint}}</text>
+      <text wx:else class="profile-hint--max">已达化龙之境 🐉</text>
+    </view>
+  </view>
+
+  <!-- 锦鲤菜单 -->
+  <view class="menu-section">
+    <view class="menu-section__title">锦鲤</view>
+    <view class="menu-item" bind:tap="onTapMenu" data-menu="gallery">
+      <text class="menu-item__label">锦鲤图鉴</text>
+      <text class="menu-item__arrow">›</text>
+    </view>
+    <view class="menu-item" bind:tap="onTapMenu" data-menu="rewards">
+      <text class="menu-item__label">等级奖励</text>
+      <text class="menu-item__arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 设置菜单 -->
+  <view class="menu-section">
+    <view class="menu-section__title">设置</view>
+    <view class="menu-item" bind:tap="onTapMenu" data-menu="tags">
+      <text class="menu-item__label">计划标签管理</text>
+      <text class="menu-item__arrow">›</text>
+    </view>
+    <view class="menu-item" bind:tap="onTapMenu" data-menu="theme">
+      <text class="menu-item__label">主题与外观</text>
+      <text class="menu-item__value">{{themeName}}</text>
+      <text class="menu-item__arrow">›</text>
+    </view>
+    <view class="menu-item" bind:tap="onTapMenu" data-menu="lunar">
+      <text class="menu-item__label">农历日历设置</text>
+      <switch checked="{{lunarEnabled}}" bindchange="onToggleLunar" color="#4A5568" />
+    </view>
+    <view class="menu-item" bind:tap="onExportData">
+      <text class="menu-item__label">数据导出</text>
+      <text class="menu-item__arrow">›</text>
+    </view>
+    <view class="menu-item" bind:tap="onTapMenu" data-menu="about">
+      <text class="menu-item__label">关于素简</text>
+      <text class="menu-item__arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text>素简 v1.0.0</text>
+  </view>
+</view>
+
+<!-- Toast -->
+<toast visible="{{toastVisible}}" message="{{toastMessage}}" bind:hide="onHideToast" />

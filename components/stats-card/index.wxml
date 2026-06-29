@@ -1,0 +1,17 @@
+<!-- components/stats-card/index.wxml -->
+<!-- 参考: openspec/specs/home-dashboard.md §2.1 概览卡片 -->
+
+<view class="stats-row">
+  <view class="stats-card">
+    <text class="stats-card__num">{{totalTasks}}</text>
+    <text class="stats-card__label">全部任务</text>
+  </view>
+  <view class="stats-card">
+    <text class="stats-card__num stats-card__num--pending">{{pendingTasks}}</text>
+    <text class="stats-card__label">待完成</text>
+  </view>
+  <view class="stats-card">
+    <text class="stats-card__num stats-card__num--habit">{{todayHabits}}</text>
+    <text class="stats-card__label">今日习惯</text>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+{
+  "2025": {
+    "months": {
+      "1": { "leap": false, "days": 30 },
+      "2": { "leap": false, "days": 29 },
+      "3": { "leap": false, "days": 30 },
+      "4": { "leap": false, "days": 30 },
+      "5": { "leap": false, "days": 29 },
+      "6": { "leap": false, "days": 30 },
+      "7": { "leap": false, "days": 30 },
+      "8": { "leap": false, "days": 29 },
+      "9": { "leap": false, "days": 30 },
+      "10": { "leap": false, "days": 29 },
+      "11": { "leap": false, "days": 30 },
+      "12": { "leap": false, "days": 30 }
+    },
+    "leapMonth": 6
+  },
+  "2026": {
+    "months": {
+      "1": { "leap": false, "days": 29 },
+      "2": { "leap": false, "days": 30 },
+      "3": { "leap": false, "days": 29 },
+      "4": { "leap": false, "days": 30 },
+      "5": { "leap": false, "days": 30 },
+      "6": { "leap": false, "days": 29 },
+      "7": { "leap": false, "days": 30 },
+      "8": { "leap": false, "days": 29 },
+      "9": { "leap": false, "days": 30 },
+      "10": { "leap": false, "days": 30 },
+      "11": { "leap": false, "days": 29 },
+      "12": { "leap": false, "days": 30 }
+    },
+    "leapMonth": 0
+  }
+}

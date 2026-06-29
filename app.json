@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/list/list",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F7F4ED",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "素简",
+    "backgroundColor": "#F7F4ED",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#9C9690",
+    "selectedColor": "#4A5568",
+    "backgroundColor": "#FCFAF6",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/tab-home.svg",
+        "selectedIconPath": "assets/icons/tab-home-active.svg"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "清单·打卡",
+        "iconPath": "assets/icons/tab-list.svg",
+        "selectedIconPath": "assets/icons/tab-list-active.svg"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "assets/icons/tab-profile.svg",
+        "selectedIconPath": "assets/icons/tab-profile-active.svg"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

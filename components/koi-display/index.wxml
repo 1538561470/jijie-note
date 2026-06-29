@@ -1,0 +1,15 @@
+<!-- components/koi-display/index.wxml -->
+<!-- 参考: openspec/specs/koi-growth-system.md -->
+
+<view class="koi-display">
+  <view class="koi-display__fish {{level >= 9 ? 'koi-display__fish--gold' : ''}}">
+    <text class="koi-display__emoji">🐟</text>
+  </view>
+  <view class="koi-display__info">
+    <text class="koi-display__level">Lv.{{level}} {{levelTitle}}</text>
+    <view class="koi-display__exp-bar">
+      <view class="koi-display__exp-fill" style="width: {{expPercent}}%"></view>
+    </view>
+    <text class="koi-display__exp-text">{{exp}}/{{nextLevelExp}}</text>
+  </view>
+</view>

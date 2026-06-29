@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "yiji-card": "/components/yiji-card/index",
+    "stats-card": "/components/stats-card/index",
+    "task-card": "/components/task-card/index",
+    "habit-card": "/components/habit-card/index",
+    "add-plan-drawer": "/components/add-plan-drawer/index",
+    "toast": "/components/toast/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "素简"
+}

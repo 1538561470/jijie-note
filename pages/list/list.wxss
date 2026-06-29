@@ -1,0 +1,175 @@
+/* pages/list/list.wxss */
+
+/* Tab 切换 */
+.list-tabs {
+  display: flex;
+  background-color: var(--input-bg);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  margin-bottom: 16px;
+}
+
+.list-tab {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--ink-tertiary);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.list-tab--active {
+  background-color: var(--card-bg);
+  color: var(--indigo-deep);
+  font-weight: 500;
+  box-shadow: var(--shadow-inner);
+}
+
+/* 排序栏 */
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.sort-bar__label {
+  font-size: 13px;
+  color: var(--ink-tertiary);
+}
+
+.sort-item {
+  font-size: 13px;
+  color: var(--ink-secondary);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.sort-item--active {
+  color: var(--indigo-deep);
+  font-weight: 500;
+  background-color: var(--input-bg);
+}
+
+/* 任务分组 */
+.task-group {
+  margin-bottom: 16px;
+}
+
+.task-group__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 0 4px;
+}
+
+.task-group__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-black);
+}
+
+.task-group__count {
+  font-size: 12px;
+  color: var(--ink-tertiary);
+  background-color: var(--input-bg);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* 习惯选择器 */
+.habit-picker {
+  margin-bottom: 12px;
+}
+
+.habit-picker__current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-inner);
+  font-size: 14px;
+}
+
+.habit-picker__arrow {
+  font-size: 10px;
+  color: var(--ink-tertiary);
+}
+
+/* 连续天数 */
+.streak-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px var(--card-padding);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-inner);
+  margin-top: var(--card-gap);
+}
+
+.streak-info__fire {
+  font-size: 18px;
+}
+
+.streak-info__text {
+  font-size: 14px;
+  color: var(--ink-black);
+}
+
+.streak-info__title {
+  font-size: 14px;
+  color: var(--cinnabar);
+  font-weight: 500;
+}
+
+/* 骨架屏 */
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.skeleton-card {
+  height: 72px;
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+.skeleton-cal {
+  height: 320px;
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+.skeleton-calendar {
+  margin-bottom: var(--card-gap);
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 0;
+  gap: 8px;
+}
+
+.empty-state__icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.empty-state__text {
+  font-size: 16px;
+  color: var(--ink-secondary);
+}
+
+.empty-state__hint {
+  font-size: 13px;
+  color: var(--ink-tertiary);
+}

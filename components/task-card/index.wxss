@@ -1,0 +1,96 @@
+/* components/task-card/index.wxss */
+
+.task-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-inner);
+  margin-bottom: var(--card-gap);
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.task-card--done {
+  opacity: 0.6;
+}
+
+.task-card__check {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.task-card__check-icon {
+  font-size: 20px;
+  color: var(--ink-tertiary);
+}
+
+.task-card__check--checked .task-card__check-icon {
+  color: var(--cinnabar);
+}
+
+.task-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-card__title {
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink-black);
+  line-height: 1.5;
+  display: block;
+}
+
+.task-card__title--done {
+  text-decoration: line-through;
+  text-decoration-color: var(--cinnabar);
+}
+
+.task-card__meta {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  gap: 6px;
+}
+
+.task-card__note {
+  font-size: 12px;
+  color: var(--ink-tertiary);
+}
+
+.task-card__stamp {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%) rotate(18deg);
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--seal-red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--seal-red);
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* 优先级标记 */
+.priority-dot {
+  font-size: 10px;
+  margin-right: 4px;
+}
+
+.priority-dot--high { color: var(--cinnabar); }
+.priority-dot--mid  { color: var(--indigo-deep); }
+.priority-dot--low  { color: var(--ink-tertiary); }

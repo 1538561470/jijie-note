@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "koi-display": "/components/koi-display/index",
+    "toast": "/components/toast/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "我的"
+}
